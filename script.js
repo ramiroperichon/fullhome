@@ -1,9 +1,29 @@
+/* ================= DATOS DEL LOCAL (completar) =================
+   whatsapp : número con código de país, sin + ni espacios. Ej: '5493775123456'
+              (mientras esté vacío, los botones abren WhatsApp con el mensaje listo para elegir contacto)
+   hoursText: horario visible en la sección "Dónde". Ej: 'Lun a Sáb · 9 a 13 y 16:30 a 21'
+   hours    : para el cartel "Abierto ahora". Día 0 = domingo. Ej: { 0: [], 1: [[9,13],[16.5,21]], ... }
+   ============================================================== */
+const CONTACT = {
+  whatsapp: '',
+  hoursText: '',
+  hours: null,
+};
+
 (() => {
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = matchMedia('(pointer: fine)').matches;
+
+  /* ---------- WhatsApp ---------- */
+  const waURL = msg => `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(msg)}`;
+  const wireWA = root => $$('[data-wa]', root).concat(root.matches?.('[data-wa]') ? [root] : []).forEach(a => {
+    a.href = waURL(a.dataset.msg || 'Hola! Quería hacer una consulta.');
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+  wireWA(document);
 
   /* ---------- Preloader ---------- */
   const t0 = performance.now();
@@ -25,6 +45,12 @@
   const lit = dim.cloneNode(true);
   lit.classList.replace('scene-dim', 'scene-lit');
   lit.setAttribute('aria-hidden', 'true');
+  const litTitle = $('h1', lit);                       // un solo <h1> en la página
+  if (litTitle) {
+    const d = document.createElement('div');
+    d.className = litTitle.className; d.innerHTML = litTitle.innerHTML;
+    litTitle.replaceWith(d);
+  }
   dim.after(lit);
 
   const hero = $('#inicio');
@@ -60,7 +86,10 @@
     $('.sw-label', sw).textContent = flood ? 'Apagar la luz' : 'Prender la luz';
   });
 
+  // El botón flotante de WhatsApp aparece al salir del hero (el hero ya tiene su propio botón)
+  const waFloat = $('.wa-float');
   new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; }).observe(hero);
+  new IntersectionObserver(([e]) => { waFloat.classList.toggle('away', e.isIntersecting); }, { threshold: 0.55 }).observe(hero);
 
   const loop = t => {
     if (heroVisible) {
@@ -120,21 +149,10 @@
     });
   }
 
-  /* ---------- Reveal + contadores ---------- */
-  const countUp = el => {
-    const end = +el.dataset.count, pre = el.dataset.prefix || '';
-    if (reduce) { el.textContent = pre + end; return; }
-    const dur = 1800, s = performance.now();
-    (function tick(n) {
-      const p = clamp((n - s) / dur, 0, 1);
-      el.textContent = pre + Math.round(end * (1 - Math.pow(1 - p, 4)));
-      if (p < 1) requestAnimationFrame(tick);
-    })(s);
-  };
+  /* ---------- Reveal ---------- */
   const io = new IntersectionObserver(entries => entries.forEach(e => {
     if (!e.isIntersecting) return;
     e.target.classList.add('in');
-    $$('[data-count]', e.target).forEach(countUp);
     io.unobserve(e.target);
   }), { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
   $$('[data-reveal]').forEach(el => io.observe(el));
@@ -196,24 +214,35 @@
   onScroll();
 
   /* ---------- Catálogo ---------- */
-  // Nombres de ejemplo: ajustar al stock real del local
+  // Rubros según lo que vende el local. Ajustar nombres al stock real.
+  // [nombre, rubro, ícono, destacado?]
   const ITEMS = [
-    ['Ollas y cacerolas', 'cocina', 'pot'], ['Sartenes', 'cocina', 'pan'], ['Cubiertos', 'cocina', 'cutlery'], ['Utensilios', 'cocina', 'cutlery'],
-    ['Tazas y mugs', 'bazar', 'cup'], ['Vasos y copas', 'bazar', 'glass'], ['Platos y bowls', 'bazar', 'plate'], ['Termos y botellas', 'bazar', 'bottle'],
-    ['Linternas', 'luz', 'flash'], ['Lámparas LED', 'luz', 'bulb'], ['Pilas', 'luz', 'battery'], ['Faroles', 'luz', 'flash'],
-    ['Decoración', 'hogar', 'spark'], ['Relojes', 'hogar', 'clock'], ['Limpieza', 'hogar', 'broom'], ['Regalos', 'hogar', 'gift'],
-    ['Cajas organizadoras', 'orden', 'box'], ['Canastos', 'orden', 'basket'],
+    ['Linternas', 'luz', 'flash', true],
+    ['Ollas y sartenes', 'cocina', 'pot'], ['Utensilios', 'cocina', 'cutlery'], ['Cubiertos', 'cocina', 'cutlery'],
+    ['Tazas y vasos', 'bazar', 'cup'], ['Platos y bowls', 'bazar', 'plate'], ['Termos y botellas', 'bazar', 'bottle'],
+    ['Lámparas', 'luz', 'bulb'],
+    ['Decoración', 'hogar', 'spark'], ['Limpieza', 'hogar', 'broom'], ['Artículos para la casa', 'hogar', 'home'],
+    ['Accesorios en general', 'accesorios', 'spark'],
   ];
-  const LABEL = { cocina: 'Cocina', bazar: 'Bazar', luz: 'Luz', hogar: 'Hogar', orden: 'Orden' };
+  const LABEL = { cocina: 'Cocina', bazar: 'Bazar', luz: 'Luz', hogar: 'Hogar', accesorios: 'Accesorios' };
   const grid = $('#items');
-  const els = ITEMS.map(([name, cat, icon]) => {
-    const a = document.createElement('article');
-    a.className = 'item';
-    a.dataset.cat = cat;
-    a.innerHTML = `<svg class="ic"><use href="#i-${icon}"/></svg><small>${LABEL[cat]}</small><b>${name}</b>`;
-    a.classList.add('out');
-    grid.append(a);
-    return a;
+  const mk = (cls, cat, html, msg) => {
+    const a = document.createElement('a');
+    a.className = 'item out ' + cls; a.dataset.cat = cat; a.dataset.wa = ''; a.dataset.msg = msg;
+    a.innerHTML = html; wireWA(a); grid.append(a); return a;
+  };
+  const cta = '<span class="item-cta"><svg class="ic"><use href="#i-wa"/></svg>Consultar</span>';
+  const els = ITEMS.map(([name, cat, icon, feat]) => mk(feat ? 'feat' : '', cat,
+    `${feat ? '<span class="badge">Destacado</span>' : ''}<svg class="ic" aria-hidden="true"><use href="#i-${icon}"/></svg><small class="cat">${LABEL[cat]}</small><b>${name}</b>${cta}`,
+    `Hola! Quería consultar por ${name.toLowerCase()}.`));
+  els.push(mk('more', 'more',
+    `<svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg><b>¿Buscás otra cosa?</b><span class="item-cta">Consultanos</span>`,
+    'Hola! Estoy buscando un producto y quería consultar si lo tienen.'));
+
+  // contador por rubro en los chips
+  $$('.chip').forEach(ch => {
+    const f = ch.dataset.f, n = f === 'all' ? ITEMS.length : ITEMS.filter(i => i[1] === f).length;
+    ch.insertAdjacentHTML('beforeend', `<small>${n}</small>`);
   });
 
   let token = 0;
@@ -221,7 +250,7 @@
     const my = ++token;
     let i = 0;
     els.forEach(el => {
-      const match = filter === 'all' || el.dataset.cat === filter;
+      const match = filter === 'all' || el.dataset.cat === filter || el.dataset.cat === 'more';
       if (match) {
         el.hidden = false;
         const d = i++ * stagger;
@@ -241,17 +270,21 @@
     show(c.dataset.f);
   });
 
-  /* ---------- Abierto / cerrado ---------- */
-  // Horarios de ejemplo: confirmar con el local. Cada tramo es [apertura, cierre] en horas decimales.
-  const HOURS = { 1: [[9, 13], [16.5, 21]], 2: [[9, 13], [16.5, 21]], 3: [[9, 13], [16.5, 21]], 4: [[9, 13], [16.5, 21]], 5: [[9, 13], [16.5, 21]], 6: [[9, 13], [16.5, 21]], 0: [] };
+  /* ---------- Horarios ---------- */
+  // Sin datos reales no se muestra nada inventado: queda "Consultalos por WhatsApp".
+  if (CONTACT.hoursText) {
+    $('#hoursText').textContent = CONTACT.hoursText;
+    $('#hoursSub').textContent = 'Horario de atención';
+  }
   const badge = $('#openBadge');
   const fmt = hr => { const hh = Math.floor(hr), mm = Math.round((hr - hh) * 60); return mm ? `${hh}:${String(mm).padStart(2, '0')}` : `${hh}`; };
   const checkOpen = () => {
     const ar = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Argentina/Buenos_Aires' }));
     const hr = ar.getHours() + ar.getMinutes() / 60;
-    const slots = HOURS[ar.getDay()] || [];
+    const slots = CONTACT.hours[ar.getDay()] || [];
     const cur = slots.find(([a, b]) => hr >= a && hr < b);
     const label = $('b', badge);
+    badge.hidden = false;
     badge.classList.remove('open', 'closed');
     if (cur) {
       badge.classList.add('open');
@@ -262,8 +295,7 @@
       label.textContent = next ? `Cerrado · abre a las ${fmt(next[0])}` : 'Cerrado por hoy';
     }
   };
-  checkOpen();
-  setInterval(checkOpen, 60000);
+  if (CONTACT.hours) { checkOpen(); setInterval(checkOpen, 60000); }
 
   /* ---------- Varios ---------- */
   $('#year').textContent = new Date().getFullYear();

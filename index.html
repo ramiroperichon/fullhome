@@ -3,8 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Full Home Curuzú | Bazar, cocina, hogar y linternas</title>
-<meta name="description" content="Full Home Curuzú: bazar, artículos de cocina, accesorios para el hogar, linternas y mucho más en Curuzú Cuatiá, Corrientes.">
+<title>Full Home Curuzú | Bazar, cocina y linternas en Curuzú Cuatiá</title>
+<meta name="description" content="Full Home Curuzú: bazar, cocina, artículos para el hogar, linternas y accesorios en Curuzú Cuatiá, Corrientes. Envíos a todo el país y a Mariano I. Loza.">
+<meta name="robots" content="index,follow">
+<!-- TODO: agregar <link rel="canonical"> y og:url / og:image (URL absoluta) cuando esté publicado el dominio -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Full Home Curuzú">
+<meta property="og:title" content="Full Home Curuzú | Bazar, cocina y linternas">
+<meta property="og:description" content="Bazar, cocina, hogar, linternas y accesorios en Curuzú Cuatiá. Envíos a todo el país y a Mariano I. Loza.">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Store","name":"Full Home Curuzú",
+ "description":"Bazar, cocina, artículos para el hogar, linternas y accesorios en Curuzú Cuatiá, Corrientes.",
+ "address":{"@type":"PostalAddress","addressLocality":"Curuzú Cuatiá","addressRegion":"Corrientes","addressCountry":"AR"},
+ "hasMap":"https://maps.app.goo.gl/WexHodk12SfMitmt9",
+ "areaServed":[{"@type":"Country","name":"Argentina"},{"@type":"City","name":"Mariano I. Loza"}]}
+</script>
 <meta name="theme-color" content="#0a0a0a">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,6 +52,7 @@
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12.2V4a1 1 0 0 1 1-1h8.2a1 1 0 0 1 .7.3l8 8a1 1 0 0 1 0 1.4l-7.2 7.2a1 1 0 0 1-1.4 0l-8-8a1 1 0 0 1-.3-.7z"/><circle cx="8" cy="8" r="1.4"/></symbol>
   <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5S3.5 15 3.5 8.9A4.4 4.4 0 0 1 12 7.2a4.4 4.4 0 0 1 8.5 1.7C20.5 15 12 20.5 12 20.5z"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6.5h11v10h-11z"/><path d="M13.5 10h4l3 3v3.5h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></symbol>
   <symbol id="i-gift" viewBox="0 0 24 24"><path d="M4 10h16v10.5H4zM3 6.5h18V10H3zM12 6.5v14"/><path d="M12 6.5C10 6.5 7.5 6 7.5 4.3S10 2.5 12 6.5c2-4 4.5-3.8 4.5-2.2S14 6.5 12 6.5z"/></symbol>
 </svg>
 
@@ -58,13 +74,18 @@
   </a>
   <nav class="nav-links" aria-label="Principal">
     <a href="#pasillos">Pasillos</a>
-    <a href="#por-que">Por qué</a>
     <a href="#catalogo">Qué vendemos</a>
+    <a href="#envios">Envíos</a>
     <a href="#donde">Dónde</a>
   </nav>
-  <a class="btn btn-o btn-sm" href="https://maps.app.goo.gl/WexHodk12SfMitmt9" target="_blank" rel="noopener" data-magnetic>
-    <svg class="ic"><use href="#i-pin"/></svg><span>Cómo llegar</span>
-  </a>
+  <div class="nav-cta">
+    <a class="btn btn-ghost btn-sm" href="https://wa.me/" data-wa data-msg="Hola! Quería hacer una consulta." target="_blank" rel="noopener">
+      <svg class="ic"><use href="#i-wa"/></svg><span>WhatsApp</span>
+    </a>
+    <a class="btn btn-o btn-sm" href="https://maps.app.goo.gl/WexHodk12SfMitmt9" target="_blank" rel="noopener" data-magnetic>
+      <svg class="ic"><use href="#i-pin"/></svg><span>Cómo llegar</span>
+    </a>
+  </div>
 </header>
 
 <main>
@@ -72,11 +93,11 @@
 <section class="hero" id="inicio">
   <div class="hero-stage" id="stage">
     <div class="scene scene-dim">
-      <div class="hero-title" role="heading" aria-level="1">
+      <h1 class="hero-title">
         <span class="ln"><span style="--i:0">Todo</span></span>
         <span class="ln"><span style="--i:1">para tu</span></span>
         <span class="ln accent"><span style="--i:2">hogar<i>.</i></span></span>
-      </div>
+      </h1>
       <span class="fi" style="--x:76%;--y:16%;--s:6.5rem;--t:7s;--r:-14deg"><svg class="ic"><use href="#i-flash"/></svg></span>
       <span class="fi" style="--x:58%;--y:62%;--s:5rem;--t:9s;--r:10deg"><svg class="ic"><use href="#i-cup"/></svg></span>
       <span class="fi" style="--x:88%;--y:48%;--s:7rem;--t:8s;--r:8deg"><svg class="ic"><use href="#i-pot"/></svg></span>
@@ -92,16 +113,20 @@
   </div>
 
   <div class="hero-ui">
-    <p class="hero-sub" data-intro>
-      Bazar, cocina, linternas, accesorios y todo lo que le falta a tu casa.
-      <strong>Curuzú Cuatiá, Corrientes.</strong>
-    </p>
+    <div class="hero-info" data-intro>
+      <span class="ship-chip"><svg class="ic"><use href="#i-truck"/></svg>Envíos a todo el país y a Mariano I. Loza</span>
+      <p class="hero-sub">
+        Bazar, cocina, linternas, accesorios y todo lo que le falta a tu casa.
+        <strong>Curuzú Cuatiá, Corrientes.</strong>
+      </p>
+    </div>
     <div class="hero-actions" data-intro>
       <button class="switch" id="lightSwitch" type="button" aria-pressed="false">
         <span class="sw-track"><i></i></span>
         <span class="sw-label">Prender la luz</span>
       </button>
-      <a class="btn btn-o" href="#pasillos" data-magnetic><span>Recorrer el local</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-o" href="https://wa.me/" data-wa data-msg="Hola! Quería hacer una consulta." target="_blank" rel="noopener" data-magnetic><svg class="ic"><use href="#i-wa"/></svg><span>Pedir por WhatsApp</span></a>
+      <a class="btn btn-ghost" href="#pasillos" data-magnetic><span>Recorrer el local</span><svg class="ic"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
   <div class="hint" data-intro><span></span><em>movete: la linterna te sigue</em></div>
@@ -111,17 +136,18 @@
 <!-- ============ CINTAS ============ -->
 <section class="bands" aria-hidden="true">
   <div class="band band-o"><div class="marquee" data-speed="38">
-    <span>Cocina</span><svg class="ic"><use href="#i-spark"/></svg><span>Bazar</span><svg class="ic"><use href="#i-spark"/></svg><span>Linternas</span><svg class="ic"><use href="#i-spark"/></svg><span>Hogar</span><svg class="ic"><use href="#i-spark"/></svg><span>Organización</span><svg class="ic"><use href="#i-spark"/></svg><span>Accesorios</span><svg class="ic"><use href="#i-spark"/></svg>
+    <span>Cocina</span><svg class="ic"><use href="#i-spark"/></svg><span>Bazar</span><svg class="ic"><use href="#i-spark"/></svg><span>Linternas</span><svg class="ic"><use href="#i-spark"/></svg><span>Hogar</span><svg class="ic"><use href="#i-spark"/></svg><span>Accesorios</span><svg class="ic"><use href="#i-spark"/></svg>
   </div></div>
   <div class="band band-k"><div class="marquee rev" data-speed="46">
-    <span>Todo en un solo lugar</span><svg class="ic"><use href="#i-home"/></svg><span>Full Home Curuzú</span><svg class="ic"><use href="#i-home"/></svg><span>Siempre hay algo nuevo</span><svg class="ic"><use href="#i-home"/></svg><span>Pasá a ver</span><svg class="ic"><use href="#i-home"/></svg>
+    <span>Todo en un solo lugar</span><svg class="ic"><use href="#i-home"/></svg><span>Full Home Curuzú</span><svg class="ic"><use href="#i-home"/></svg><span>Envíos a todo el país</span><svg class="ic"><use href="#i-home"/></svg><span>Pasá a ver</span><svg class="ic"><use href="#i-home"/></svg>
   </div></div>
 </section>
 
 <!-- ============ PASILLOS (scroll horizontal) ============ -->
-<section class="aisles" id="pasillos" style="--n:5">
+<section class="aisles" id="pasillos" style="--n:5" aria-labelledby="pasillos-t">
   <div class="aisles-sticky">
-    <div class="aisles-head">
+    <h2 class="sr-only" id="pasillos-t">Nuestros rubros: cocina, bazar, linternas, hogar y accesorios</h2>
+    <div class="aisles-head" aria-hidden="true">
       <span class="eyebrow">Recorré el local</span>
       <div class="aisles-bar"><i></i></div>
       <span class="aisles-count"><b id="aisleNow">01</b> / 05</span>
@@ -131,42 +157,45 @@
       <article class="panel p-dark">
         <div class="panel-copy">
           <span class="num">01</span>
-          <h2 class="big"><span>Coci&shy;na</span></h2>
-          <p>Ollas, sartenes, utensilios y todo lo que hace falta para que el almuerzo salga redondo. Desde lo básico hasta el chiche que no sabías que necesitabas.</p>
-          <ul class="tags"><li>Ollas</li><li>Sartenes</li><li>Cubiertos</li><li>Utensilios</li><li>Cuchillos</li></ul>
+          <h3 class="big"><span>Coci&shy;na</span></h3>
+          <p>Artículos para cocinar, servir y equipar tu cocina. Desde lo básico hasta ese accesorio que no sabías que necesitabas.</p>
+          <ul class="tags"><li>Utensilios</li><li>Ollas y sartenes</li><li>Cubiertos</li></ul>
+          <a class="btn btn-o btn-sm panel-cta" href="https://wa.me/" data-wa data-msg="Hola! Quería consultar por artículos de cocina." target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg><span>Consultar por cocina</span></a>
         </div>
         <div class="panel-art">
           <div class="rings"><i></i><i></i><i></i></div>
-          <svg class="ic art-ic"><use href="#i-pot"/></svg>
-          <span class="sticker s1"><svg class="ic"><use href="#i-tag"/></svg>Ofertas</span>
+          <svg class="ic art-ic" aria-hidden="true"><use href="#i-pot"/></svg>
+          <span class="sticker s1"><svg class="ic"><use href="#i-pot"/></svg>Para cocinar</span>
         </div>
       </article>
 
       <article class="panel p-light">
         <div class="panel-copy">
           <span class="num">02</span>
-          <h2 class="big"><span>Bazar</span></h2>
-          <p>Tazas, vasos, platos, jarras y botellas. Para el mate de todos los días y para cuando vienen visitas.</p>
-          <ul class="tags"><li>Tazas</li><li>Vasos</li><li>Platos</li><li>Termos</li><li>Jarras</li></ul>
+          <h3 class="big"><span>Bazar</span></h3>
+          <p>Vajilla y artículos de bazar para el día a día y para cuando vienen visitas.</p>
+          <ul class="tags"><li>Tazas y vasos</li><li>Platos y bowls</li><li>Termos y botellas</li></ul>
+          <a class="btn btn-k btn-sm panel-cta" href="https://wa.me/" data-wa data-msg="Hola! Quería consultar por artículos de bazar." target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg><span>Consultar por bazar</span></a>
         </div>
         <div class="panel-art">
           <div class="rings"><i></i><i></i><i></i></div>
-          <svg class="ic art-ic"><use href="#i-cup"/></svg>
-          <span class="sticker s2"><svg class="ic"><use href="#i-heart"/></svg>Favoritos</span>
+          <svg class="ic art-ic" aria-hidden="true"><use href="#i-cup"/></svg>
+          <span class="sticker s2"><svg class="ic"><use href="#i-cup"/></svg>Para servir</span>
         </div>
       </article>
 
       <article class="panel p-dark p-luz">
         <div class="panel-copy">
           <span class="num">03</span>
-          <h2 class="big"><span>Luz &amp; linternas</span></h2>
-          <p>Linternas, lámparas LED, faroles y pilas. Porque la luz se corta justo cuando no te lo esperás, y acá siempre hay con qué alumbrar.</p>
-          <ul class="tags"><li>Linternas</li><li>Lámparas LED</li><li>Faroles</li><li>Pilas</li></ul>
+          <h3 class="big"><span>Luz &amp; linternas</span></h3>
+          <p>Linternas y más. Porque la luz se corta justo cuando no te lo esperás, y acá hay con qué alumbrar.</p>
+          <ul class="tags"><li>Linternas</li><li>Lámparas</li></ul>
+          <a class="btn btn-o btn-sm panel-cta" href="https://wa.me/" data-wa data-msg="Hola! Quería consultar por linternas." target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg><span>Consultar por linternas</span></a>
         </div>
         <div class="panel-art">
           <div class="cone"></div>
           <div class="rings"><i></i><i></i><i></i></div>
-          <svg class="ic art-ic flicker"><use href="#i-flash"/></svg>
+          <svg class="ic art-ic flicker" aria-hidden="true"><use href="#i-flash"/></svg>
           <span class="sticker s3"><svg class="ic"><use href="#i-bulb"/></svg>¡Hay luz!</span>
         </div>
       </article>
@@ -174,28 +203,30 @@
       <article class="panel p-orange">
         <div class="panel-copy">
           <span class="num">04</span>
-          <h2 class="big"><span>Hogar</span></h2>
-          <p>Relojes, decoración, artículos de limpieza y esos detalles que convierten cualquier lugar en tu casa.</p>
-          <ul class="tags"><li>Decoración</li><li>Relojes</li><li>Limpieza</li><li>Baño</li></ul>
+          <h3 class="big"><span>Hogar</span></h3>
+          <p>Artículos de la casa y esos detalles que convierten cualquier lugar en tu lugar.</p>
+          <ul class="tags"><li>Decoración</li><li>Limpieza</li><li>Artículos para la casa</li></ul>
+          <a class="btn btn-k btn-sm panel-cta" href="https://wa.me/" data-wa data-msg="Hola! Quería consultar por artículos para el hogar." target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg><span>Consultar por hogar</span></a>
         </div>
         <div class="panel-art">
           <div class="rings"><i></i><i></i><i></i></div>
-          <svg class="ic art-ic"><use href="#i-home"/></svg>
-          <span class="sticker s4"><svg class="ic"><use href="#i-gift"/></svg>Regalos</span>
+          <svg class="ic art-ic" aria-hidden="true"><use href="#i-home"/></svg>
+          <span class="sticker s4"><svg class="ic"><use href="#i-home"/></svg>Tu casa</span>
         </div>
       </article>
 
       <article class="panel p-light">
         <div class="panel-copy">
           <span class="num">05</span>
-          <h2 class="big"><span>Orden</span></h2>
-          <p>Cajas, canastos y organizadores para que cada cosa tenga su lugar. Placard, cocina, baño, garage: todo en orden.</p>
-          <ul class="tags"><li>Cajas</li><li>Canastos</li><li>Organizadores</li><li>Perchas</li></ul>
+          <h3 class="big"><span>Acce&shy;sorios</span></h3>
+          <p>Accesorios en general: esas cosas útiles que siempre hacen falta y que nunca están cuando las buscás.</p>
+          <ul class="tags"><li>Accesorios</li><li>Y mucho más</li></ul>
+          <a class="btn btn-k btn-sm panel-cta" href="https://wa.me/" data-wa data-msg="Hola! Quería consultar por accesorios." target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg><span>Consultar por accesorios</span></a>
         </div>
         <div class="panel-art">
           <div class="rings"><i></i><i></i><i></i></div>
-          <svg class="ic art-ic"><use href="#i-box"/></svg>
-          <span class="sticker s5"><svg class="ic"><use href="#i-spark"/></svg>Novedad</span>
+          <svg class="ic art-ic" aria-hidden="true"><use href="#i-spark"/></svg>
+          <span class="sticker s5"><svg class="ic"><use href="#i-spark"/></svg>Y más</span>
         </div>
       </article>
     </div>
@@ -203,84 +234,91 @@
 </section>
 
 <!-- ============ POR QUÉ ============ -->
-<section class="why" id="por-que">
+<section class="why" id="por-que" aria-labelledby="porque-t">
   <div class="wrap">
     <span class="eyebrow dark" data-reveal>Por qué Full Home</span>
-    <h2 class="section-title" data-reveal>Entrás por <em>una cosa</em><br>y salís con <em>cinco</em>.</h2>
+    <h2 class="section-title" id="porque-t" data-reveal>Entrás por <em>una cosa</em><br>y salís con <em>cinco</em>.</h2>
 
     <div class="why-grid">
       <article class="card tilt c-k" data-reveal style="--d:0">
-        <svg class="ic"><use href="#i-tag"/></svg>
-        <h3>Precios que cierran</h3>
-        <p>Artículos para todos los bolsillos, de lo más simple a lo más canchero.</p>
+        <svg class="ic" aria-hidden="true"><use href="#i-home"/></svg>
+        <h3>Todo para la casa</h3>
+        <p>Cocina, bazar, hogar, linternas y accesorios bajo un mismo techo.</p>
       </article>
       <article class="card tilt c-o" data-reveal style="--d:1">
-        <svg class="ic"><use href="#i-spark"/></svg>
-        <h3>Siempre algo nuevo</h3>
-        <p>La mercadería rota. Cada semana hay algo distinto en las góndolas.</p>
+        <svg class="ic" aria-hidden="true"><use href="#i-flash"/></svg>
+        <h3>Linternas y más</h3>
+        <p>Para cuando se corta la luz, y para todo lo demás.</p>
       </article>
       <article class="card tilt c-w" data-reveal style="--d:2">
-        <svg class="ic"><use href="#i-home"/></svg>
-        <h3>Todo para la casa</h3>
-        <p>Cocina, bazar, luz, limpieza y orden. Un solo lugar, una sola vuelta.</p>
+        <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>
+        <h3>Consultá por WhatsApp</h3>
+        <p>Escribinos y te contamos qué tenemos para lo que buscás.</p>
       </article>
       <article class="card tilt c-k" data-reveal style="--d:3">
-        <svg class="ic"><use href="#i-heart"/></svg>
-        <h3>Atención de barrio</h3>
-        <p>Te ayudamos a elegir y te atendemos como se hace en Curuzú.</p>
+        <svg class="ic" aria-hidden="true"><use href="#i-truck"/></svg>
+        <h3>Hacemos envíos</h3>
+        <p>A todo el país y a la localidad vecina de Mariano I. Loza.</p>
       </article>
     </div>
 
-    <!-- TODO: reemplazar por cifras reales del local -->
-    <div class="stats">
-      <div data-reveal style="--d:0"><b data-count="1000" data-prefix="+">0</b><span>productos distintos</span></div>
-      <div data-reveal style="--d:1"><b data-count="5">0</b><span>rubros bajo un techo</span></div>
-      <div data-reveal style="--d:2"><b data-count="6">0</b><span>días abiertos</span></div>
+    <div class="ship" id="envios" data-reveal>
+      <div class="ship-head">
+        <span class="eyebrow dark">Envíos</span>
+        <h3>Llegamos <em>a donde estés</em>.</h3>
+      </div>
+      <ul class="ship-list">
+        <li data-reveal style="--d:0"><svg class="ic" aria-hidden="true"><use href="#i-truck"/></svg><b>Todo el país</b><span>Hacemos envíos a cualquier punto de Argentina.</span></li>
+        <li data-reveal style="--d:1"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><b>Mariano I. Loza</b><span>También enviamos a la localidad vecina.</span></li>
+        <li data-reveal style="--d:2"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><b>Curuzú Cuatiá</b><span>O pasá a verlo todo en el local.</span></li>
+      </ul>
+      <a class="btn btn-k" href="https://wa.me/" data-wa data-msg="Hola! Quería consultar por un envío." target="_blank" rel="noopener" data-magnetic><svg class="ic"><use href="#i-wa"/></svg><span>Consultar por un envío</span></a>
     </div>
   </div>
 </section>
 
 <!-- ============ CATÁLOGO ============ -->
-<section class="catalog" id="catalogo">
+<section class="catalog" id="catalogo" aria-labelledby="catalogo-t">
   <div class="wrap">
     <span class="eyebrow" data-reveal>Qué vendemos</span>
-    <h2 class="section-title" data-reveal>¿Qué estás <em>buscando</em>?</h2>
+    <h2 class="section-title" id="catalogo-t" data-reveal>¿Qué estás <em>buscando</em>?</h2>
     <div class="chips" id="chips" role="tablist" aria-label="Filtrar por rubro" data-reveal>
       <button class="chip on" data-f="all" role="tab" aria-selected="true">Todo</button>
       <button class="chip" data-f="cocina" role="tab" aria-selected="false">Cocina</button>
       <button class="chip" data-f="bazar" role="tab" aria-selected="false">Bazar</button>
       <button class="chip" data-f="luz" role="tab" aria-selected="false">Luz</button>
       <button class="chip" data-f="hogar" role="tab" aria-selected="false">Hogar</button>
-      <button class="chip" data-f="orden" role="tab" aria-selected="false">Orden</button>
+      <button class="chip" data-f="accesorios" role="tab" aria-selected="false">Accesorios</button>
     </div>
     <div class="items" id="items"></div>
-    <p class="cat-note" data-reveal>Y mucho más. Pasá y mirá, siempre hay algo que no estabas buscando.</p>
+    <p class="cat-note" data-reveal>Tocá cualquier rubro para consultarnos por WhatsApp. Y si preferís verlo en persona, pasá por el local.</p>
   </div>
 </section>
 
 <!-- ============ DÓNDE ============ -->
-<section class="where" id="donde">
+<section class="where" id="donde" aria-labelledby="donde-t">
   <div class="wrap where-grid">
     <div class="where-copy">
       <span class="eyebrow dark" data-reveal>Dónde estamos</span>
-      <h2 class="section-title" data-reveal>Te <em>esperamos</em><br>en Curuzú.</h2>
-      <span class="open-badge" id="openBadge" data-reveal><i></i><b>Consultando…</b></span>
+      <h2 class="section-title" id="donde-t" data-reveal>Te <em>esperamos</em><br>en Curuzú.</h2>
+      <span class="open-badge" id="openBadge" hidden><i></i><b></b></span>
 
       <ul class="info" data-reveal>
-        <li><svg class="ic"><use href="#i-pin"/></svg><div><b>Curuzú Cuatiá, Corrientes</b><span>Dirección exacta en Google Maps</span></div></li>
-        <!-- TODO: confirmar horarios reales (también en script.js, const HOURS) -->
-        <li><svg class="ic"><use href="#i-clock"/></svg><div><b>Lun a Sáb · 9 a 13 y 16:30 a 21</b><span>Horario a confirmar</span></div></li>
-        <!-- TODO: reemplazar 549XXXXXXXXXX por el WhatsApp real -->
-        <li><svg class="ic"><use href="#i-wa"/></svg><div><b>Escribinos por WhatsApp</b><span>Consultá stock y precios</span></div></li>
+        <!-- TODO: agregar calle y número reales en #addrText cuando estén disponibles -->
+        <li><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><address><b id="addrText">Curuzú Cuatiá, Corrientes</b><span>Ubicación exacta en Google Maps</span></address></li>
+        <!-- Los horarios se completan en script.js (CONTACT.hoursText / CONTACT.hours) -->
+        <li><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><div><b id="hoursText">Horarios de atención</b><span id="hoursSub">Consultalos por WhatsApp</span></div></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg><div><b>Escribinos por WhatsApp</b><span>Consultá por productos y envíos</span></div></li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-truck"/></svg><div><b>Envíos a todo el país</b><span>Y a la localidad vecina de Mariano I. Loza</span></div></li>
       </ul>
 
       <div class="where-actions" data-reveal>
         <a class="btn btn-k" href="https://maps.app.goo.gl/WexHodk12SfMitmt9" target="_blank" rel="noopener" data-magnetic><svg class="ic"><use href="#i-pin"/></svg><span>Abrir en Google Maps</span></a>
-        <a class="btn btn-line" href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener" data-magnetic><svg class="ic"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+        <a class="btn btn-w" href="https://wa.me/" data-wa data-msg="Hola! Quería hacer una consulta." target="_blank" rel="noopener" data-magnetic><svg class="ic"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
       </div>
     </div>
 
-    <div class="map" data-reveal>
+    <a class="map" href="https://maps.app.goo.gl/WexHodk12SfMitmt9" target="_blank" rel="noopener" aria-label="Abrir la ubicación de Full Home Curuzú en Google Maps" data-reveal>
       <svg viewBox="0 0 600 460" role="img" aria-label="Mapa estilizado con la ubicación del local">
         <rect width="600" height="460" fill="#141414"/>
         <g fill="#1d1d1d">
@@ -298,8 +336,9 @@
           <g class="pin-body"><path d="M0 0s-22-18-22-34a22 22 0 0 1 44 0C22-18 0 0 0 0z" fill="#ff6a00"/><circle cy="-34" r="9" fill="#0a0a0a"/><path d="M-4-34h8" stroke="#fff" stroke-width="2.500" stroke-linecap="round"/></g>
         </g>
       </svg>
-      <div class="map-tag"><svg class="ic"><use href="#i-home"/></svg>Full Home</div>
-    </div>
+      <span class="map-tag"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg>Full Home</span>
+      <span class="map-open">Abrir en Google Maps<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+    </a>
   </div>
 </section>
 </main>
@@ -309,7 +348,10 @@
   <div class="wrap">
     <div class="foot-cta">
       <h2 data-reveal>Pasá a ver todo<br><em>en persona.</em></h2>
-      <a class="btn btn-o btn-lg" href="https://maps.app.goo.gl/WexHodk12SfMitmt9" target="_blank" rel="noopener" data-magnetic data-reveal><span>Cómo llegar</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+      <div class="foot-actions" data-reveal>
+        <a class="btn btn-o btn-lg" href="https://wa.me/" data-wa data-msg="Hola! Quería hacer una consulta." target="_blank" rel="noopener" data-magnetic><svg class="ic"><use href="#i-wa"/></svg><span>Escribinos</span></a>
+        <a class="btn btn-ghost btn-lg" href="https://maps.app.goo.gl/WexHodk12SfMitmt9" target="_blank" rel="noopener" data-magnetic><span>Cómo llegar</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
     </div>
   </div>
   <div class="giant" aria-hidden="true"><span>full</span><span>home</span></div>
@@ -318,6 +360,11 @@
     <button type="button" id="toTop">Volver arriba ↑</button>
   </div>
 </footer>
+
+<a class="wa-float" href="https://wa.me/" data-wa data-msg="Hola! Quería hacer una consulta." target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <span class="wa-tip">¿Consultás por algún producto?</span>
+  <span class="wa-btn"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg></span>
+</a>
 
 <script src="script.js"></script>
 </body>
