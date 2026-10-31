@@ -5,9 +5,9 @@
    hours    : para el cartel "Abierto ahora". Día 0 = domingo. Ej: { 0: [], 1: [[9,13],[16.5,21]], ... }
    ============================================================== */
 const CONTACT = {
-  whatsapp: '',
-  hoursText: '',
-  hours: null,
+  whatsapp: '5493774440841',          // 3774-440841
+  hoursText: '9 a 13 h y 16 a 21 h',
+  hours: null,                         // completar con los días de atención para activar "Abierto ahora"
 };
 
 (() => {

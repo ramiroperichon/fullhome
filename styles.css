@@ -108,7 +108,7 @@ body:not(.loaded){overflow:hidden}
 .scene-lit .fi:nth-of-type(even){color:var(--w);filter:drop-shadow(0 0 14px rgba(255,255,255,.7))}
 .scene-lit .fi .ic{stroke-width:1.4}
 @keyframes float{from{transform:translateY(-14px) rotate(-5deg)}to{transform:translateY(18px) rotate(6deg)}}
-@media (max-width:700px){.fi{opacity:.75}.fi:nth-of-type(n+6){display:none}}
+@media (max-width:700px){.fi{opacity:.75}.fi:not(:nth-of-type(1)):not(:nth-of-type(5)){display:none}}
 
 .hero-ui{position:absolute;z-index:3;left:0;right:0;bottom:2.4rem;display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;width:min(1180px,100% - 2.5rem);margin-inline:auto}
 .hero-info{display:grid;gap:.9rem;justify-items:start}
@@ -226,7 +226,8 @@ body:not(.loaded){overflow:hidden}
 @media (max-width:900px){
   .aisles{height:auto}
   .aisles-sticky{position:static;height:auto;overflow:visible}
-  .aisles-head{display:none}
+  .aisles-head{display:flex;position:static;padding:3.5rem 1.25rem 0}
+  .aisles-bar,.aisles-count{display:none}
   .aisles-track{display:block;width:auto;transform:none!important}
   .panel{flex:none;height:auto;min-height:100svh;grid-template-columns:1fr;padding:5rem 1.25rem 3rem;gap:1rem;align-content:center}
   .panel-art{width:min(80%,360px);order:-1;max-height:none}
@@ -322,6 +323,9 @@ body:not(.loaded){overflow:hidden}
 .info address{font-style:normal}
 .info b{display:block;font-size:1.15rem;letter-spacing:-.01em}
 .info span{font-size:.95rem;opacity:.8}
+.info a{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.info b a{text-decoration-color:rgba(10,10,10,.35)}
+.foot-bottom a:hover{color:var(--o)}
 .where-actions{display:flex;flex-wrap:wrap;gap:.8rem}
 .map{display:block;position:relative;border-radius:32px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);border:6px solid var(--k);transform:rotate(1.5deg);transition:transform .8s var(--ease),opacity .9s var(--ease)}
 .map.in:hover{transform:rotate(0) scale(1.02)}
@@ -370,6 +374,54 @@ body:not(.loaded){overflow:hidden}
 @keyframes waTip{0%{opacity:0;transform:translateX(14px)}8%,85%{opacity:1;transform:none}100%{opacity:0;transform:translateX(14px)}}
 @media (max-width:560px){.map-tag{display:none}.wa-tip{display:none}.wa-btn{width:58px;height:58px}}
 .item[hidden]{display:none}
+
+
+/* ============ AJUSTES CELULAR ============ */
+@media (max-width:560px){
+  .wrap{width:calc(100% - 2.5rem)}
+  .section-title{margin:.8rem 0 1.8rem}
+  /* hero */
+  .hero{min-height:max(100svh,42rem)}
+  .scene{padding-top:6.6rem;padding-bottom:18.5rem}
+  .hero-title{font-size:21vw}
+  .ship-chip{font-size:.8rem;padding:.45rem .85rem}
+  .hero-sub{font-size:1rem}
+  .hero-actions .btn-o{order:-1}
+  .hero-actions .btn-ghost{flex:1 1 0}
+  .switch{flex:0 0 auto;padding:.35rem}
+  .sw-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  /* cintas */
+  .bands{height:190px}
+  .band{padding:.7rem 0}
+  .band-o{top:14%}.band-k{top:50%}
+  /* pasillos */
+  .panel{min-height:0;padding:2.5rem 1.25rem 3.5rem;gap:.5rem}
+  .panel:first-child{padding-top:2rem}
+  .panel-art{width:min(62%,240px)}
+  .num{font-size:3.4rem;margin-bottom:.2rem}
+  .big{font-size:clamp(2.6rem,13vw,3.6rem)}
+  .panel-copy p{margin:1rem 0 1.2rem}
+  .sticker{font-size:.85rem;padding:.55rem .9rem}
+  .tags li{font-size:.85rem;padding:.4rem .85rem}
+  /* por qué */
+  .why,.catalog,.where{padding:4.5rem 0}
+  .card{min-height:200px;padding:1.6rem 1.4rem 1.8rem}
+  /* catálogo: filtros en una fila deslizable */
+  .chips{flex-wrap:nowrap;overflow-x:auto;margin-inline:-1.25rem;padding:0 1.25rem .4rem;scroll-snap-type:x proximity;scrollbar-width:none;margin-bottom:1.6rem}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none;scroll-snap-align:start;padding:.6rem 1.1rem}
+  .cat-note{margin-top:2rem;font-size:1rem}
+  /* dónde */
+  .where-actions .btn{flex:1 1 100%;justify-content:center}
+  .map{border-width:4px;border-radius:24px;transform:none}
+  /* footer */
+  .foot-actions .btn{flex:1 1 100%;justify-content:center;padding:1.1rem 1.6rem;font-size:1.1rem}
+  .foot-bottom{padding:1.4rem 0 6rem;flex-direction:column;gap:.8rem}
+  .foot-brand img{height:68px}
+  /* botón flotante */
+  .wa-btn{width:54px;height:54px}
+  .wa-btn .ic{width:26px;height:26px}
+}
 
 /* ============ REDUCED MOTION ============ */
 @media (prefers-reduced-motion:reduce){
